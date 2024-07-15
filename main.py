@@ -6,7 +6,6 @@ def add_recipe(graph: RecipeGraph, inputs: typing.Dict[str, int], outputs: typin
     recipe = Recipe(inputs, outputs)
     graph.add_recipe(recipe)
 
-# Example
 graph = RecipeGraph()
 
 add_recipe(graph, {'Oil': 25}, {'Sulfuric Light Fuel': 25})
@@ -39,10 +38,6 @@ add_recipe(graph, {'Lightly Hydro-Cracked Naphtha': 100}, {'Butane': 80})
 add_recipe(graph, {'Naphtha': 1000, 'Hydrogen': 2000}, {'Lightly Hydro-Cracked Naphtha': 800})
 # add recipe for Lubricant with 12 Oil that produce 6 Lubricant
 
-
-input = 'Oil'
-output = 'Butane'
-
 def find_recipe(graph: RecipeGraph, input: str, output: str) -> bool:
     if input not in graph.components:
         return None
@@ -63,9 +58,6 @@ def find_recipe(graph: RecipeGraph, input: str, output: str) -> bool:
             for input_name, _ in recipe.inputs.items():
                 stack.append(input_name)
     return None
-
-
-# print(find_recipe(graph, input, output))
 
 # Get the different path from output to input
 def get_paths(graph: RecipeGraph, input: str, output: str):
@@ -88,9 +80,6 @@ def get_paths(graph: RecipeGraph, input: str, output: str):
                 stack.append((input_name, path + [input_name]))
     return paths
 
-paths = get_paths(graph, input, output)
-# print(paths)
-
 # Calculate the amount of input needed to produce the output quantity of a defined list of recipes:
 def calculate_input(graph: RecipeGraph, entire_recipe: typing.List[str], output_quantity: int) -> dict:
     byproduct = {}
@@ -111,8 +100,6 @@ def calculate_input(graph: RecipeGraph, entire_recipe: typing.List[str], output_
         if graph.components[key].recipes != []:
             del byproduct[key]
     return byproduct
-
-# print(calculate_input(graph, ['Butane', 'Lightly Hydro-Cracked Light Fuel', 'Light Fuel', 'Sulfuric Light Fuel', 'Oil'], 100))
 
 # Get the most efficient recipe to produce the output quantity of a defined list of recipes:
 def get_most_efficient_recipe(graph: RecipeGraph, recipes: typing.List[typing.List[str]], output_quantity: int) -> typing.Tuple[dict, typing.List[str]]:
@@ -139,4 +126,24 @@ def get_most_efficient_recipe(graph: RecipeGraph, recipes: typing.List[typing.Li
 
     return min_input, min_recipe
 
-print(get_most_efficient_recipe(graph, paths, 100))
+mode = input("Available modes:\n1 for input/output\nPlease select a mode: ")
+if mode == "1":
+    input_component = input("Enter the input component: ")
+    output_component = input("Enter the output component: ")
+    if not find_recipe(graph, input_component, output_component):
+        print(f"No path found from {input_component} to {output_component}")
+        print("Exiting...")
+        exit()
+
+    paths = get_paths(graph, input_component, output_component)
+    output_quantity = int(input("Enter the output quantity wanted: "))
+    min_input, min_recipe = get_most_efficient_recipe(graph, paths, output_quantity)
+    print(f"The quantity of raw material for the most efficient recipe found to produce {output_quantity} {output_component}:")
+    for key, value in min_input.items():
+        print(f"{value} {key}")
+    print("Recipe is :")
+    for component in reversed(min_recipe):
+        print(component)
+
+else:
+    print("Mode not supported. Exiting...")

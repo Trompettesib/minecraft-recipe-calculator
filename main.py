@@ -25,6 +25,21 @@ graph.add_recipe({'Light Fuel': 1000, 'Steam': 1000}, {'Severely Steam-Cracked L
 
 
 graph.add_recipe({'Naphtha': 1000, 'Hydrogen': 2000}, {'Lightly Hydro-Cracked Naphtha': 800})
+graph.add_recipe({'Naphtha': 1000, 'Hydrogen': 4000}, {'Moderately Hydro-Cracked Naphtha': 800})
+graph.add_recipe({'Naphtha': 1000, 'Hydrogen': 6000}, {'Severely Hydro-Cracked Naphtha': 800})
+
+graph.add_recipe({'Naphtha': 1000, 'Steam': 1000}, {'Lightly Steam-Cracked Naphtha': 800})
+graph.add_recipe({'Naphtha': 1000, 'Steam': 1000}, {'Moderately Steam-Cracked Naphtha': 800})
+graph.add_recipe({'Naphtha': 1000, 'Steam': 1000}, {'Severely Steam-Cracked Naphtha': 800})
+
+
+graph.add_recipe({'Refinery Gas': 1000, 'Hydrogen': 2000}, {'Lightly Hydro-Cracked Refinery Gas': 800})
+graph.add_recipe({'Refinery Gas': 1000, 'Hydrogen': 4000}, {'Moderately Hydro-Cracked Refinery Gas': 800})
+graph.add_recipe({'Refinery Gas': 1000, 'Hydrogen': 6000}, {'Severely Hydro-Cracked Refinery Gas': 800})
+
+graph.add_recipe({'Refinery Gas': 1000, 'Steam': 1000}, {'Lightly Steam-Cracked Refinery Gas': 800})
+graph.add_recipe({'Refinery Gas': 1000, 'Steam': 1000}, {'Moderately Steam-Cracked Refinery Gas': 800})
+graph.add_recipe({'Refinery Gas': 1000, 'Steam': 1000}, {'Severely Steam-Cracked Refinery Gas': 800})
 
 
 graph.add_recipe({'Lightly Hydro-Cracked Light Fuel': 100}, {'Butane': 15})
@@ -33,7 +48,10 @@ graph.add_recipe({'Severely Hydro-Cracked Light Fuel': 200}, {'Butane': 25})
 graph.add_recipe({'Refinery Gas': 50}, {'Butane': 3})
 graph.add_recipe({'Lightly Hydro-Cracked Naphtha': 100}, {'Butane': 80})
 
-# add recipe for Lubricant with 12 Oil that produce 6 Lubricant
+graph.add_recipe({'Severely Steam-Cracked Naphtha': 1000}, {'Ethylene': 500})
+graph.add_recipe({'Severely Steam-Cracked Refinery Gas': 1000}, {'Ethylene': 300})
+
+
 
 mode = input("Available modes:\n1 for input/output\nPlease select a mode: ")
 if mode == "1":

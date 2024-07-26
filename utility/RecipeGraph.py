@@ -2,6 +2,7 @@ from utility.Recipe import Recipe
 from utility.Component import Component
 import typing
 
+
 class RecipeGraph:
     def __init__(self):
         self.components = {}
@@ -67,7 +68,9 @@ class RecipeGraph:
         return paths
 
     # Calculate the amount of input needed to produce the output quantity of a defined list of recipes:
-    def calculate_input(self, entire_recipe: typing.List[str], output_quantity: int) -> dict:
+    def calculate_input(
+        self, entire_recipe: typing.List[str], output_quantity: int
+    ) -> dict:
         byproduct = {}
         quantity = output_quantity
         entire_recipe_copy = entire_recipe.copy()
@@ -77,8 +80,14 @@ class RecipeGraph:
             for recipe in self.components[output].recipes:
                 if from_input in recipe.inputs:
                     for input_name, input_quantity in recipe.inputs.items():
-                        multiplier = quantity / recipe.outputs[output] if quantity % recipe.outputs[output] == 0 else quantity // recipe.outputs[output] + 1
-                        byproduct[input_name] = (byproduct[input_name] if input_name in byproduct else 0) + input_quantity * multiplier
+                        multiplier = (
+                            quantity / recipe.outputs[output]
+                            if quantity % recipe.outputs[output] == 0
+                            else quantity // recipe.outputs[output] + 1
+                        )
+                        byproduct[input_name] = (
+                            byproduct[input_name] if input_name in byproduct else 0
+                        ) + input_quantity * multiplier
                     quantity = recipe.inputs[from_input] * multiplier
                     output = from_input
                     break
@@ -88,7 +97,9 @@ class RecipeGraph:
         return byproduct
 
     # Get the most efficient recipe to produce the output quantity of a defined list of recipes:
-    def get_most_efficient_recipe(self, recipes: typing.List[typing.List[str]], output_quantity: int) -> typing.Tuple[dict, typing.List[str]]:
+    def get_most_efficient_recipe(
+        self, recipes: typing.List[typing.List[str]], output_quantity: int
+    ) -> dict:
         min_input = None
         min_recipe = None
         inputs = []

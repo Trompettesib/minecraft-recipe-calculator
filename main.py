@@ -41,6 +41,14 @@ graph.add_recipe({'Refinery Gas': 1000, 'Steam': 1000}, {'Lightly Steam-Cracked 
 graph.add_recipe({'Refinery Gas': 1000, 'Steam': 1000}, {'Moderately Steam-Cracked Refinery Gas': 800})
 graph.add_recipe({'Refinery Gas': 1000, 'Steam': 1000}, {'Severely Steam-Cracked Refinery Gas': 800})
 
+graph.add_recipe({'Heavy Fuel': 1000, 'Hydrogen': 2000}, {'Lightly Hydro-Cracked Heavy Fuel': 800})
+graph.add_recipe({'Heavy Fuel': 1000, 'Hydrogen': 4000}, {'Moderately Hydro-Cracked Heavy Fuel': 800})
+graph.add_recipe({'Heavy Fuel': 1000, 'Hydrogen': 6000}, {'Severely Hydro-Cracked Heavy Fuel': 800})
+
+graph.add_recipe({'Heavy Fuel': 1000, 'Steam': 1000}, {'Lightly Steam-Cracked Heavy Fuel': 800})
+graph.add_recipe({'Heavy Fuel': 1000, 'Steam': 1000}, {'Moderately Steam-Cracked Heavy Fuel': 800})
+graph.add_recipe({'Heavy Fuel': 1000, 'Steam': 1000}, {'Severely Steam-Cracked Heavy Fuel': 800})
+
 
 graph.add_recipe({'Lightly Hydro-Cracked Light Fuel': 100}, {'Butane': 15})
 graph.add_recipe({'Moderately Hydro-Cracked Light Fuel': 100}, {'Butane': 20})
@@ -49,7 +57,34 @@ graph.add_recipe({'Refinery Gas': 50}, {'Butane': 3})
 graph.add_recipe({'Lightly Hydro-Cracked Naphtha': 100}, {'Butane': 80})
 
 graph.add_recipe({'Severely Steam-Cracked Naphtha': 1000}, {'Ethylene': 500})
-graph.add_recipe({'Severely Steam-Cracked Refinery Gas': 1000}, {'Ethylene': 300})
+
+graph.add_recipe({'Lightly Hydro-Cracked Propene': 100}, {'Ethylene': 50})
+graph.add_recipe({'Lightly Steam-Cracked Propene': 500}, {'Ethylene': 500, 'Small Pile of Carbon Dust': 1})
+graph.add_recipe({'Lightly Hydro-Cracked Butadiene': 1000}, {'Ethylene': 667})
+graph.add_recipe({'Moderately Hydro-Cracked Butadiene': 200}, {'Ethylene': 89})
+graph.add_recipe({'Severely Hydro-Cracked Butadiene': 1000}, {'Ethylene': 389})
+graph.add_recipe({'Lightly Steam-Cracked Butadiene': 1000}, {'Ethylene': 188, 'Small Pile of Carbon Dust': 3})
+graph.add_recipe({'Moderately Steam-Cracked Butadiene': 200}, {'Ethylene': 225, 'Tiny Pile of Carbon Dust': 1})
+graph.add_recipe({'Severely Steam-Cracked Butadiene': 1000}, {'Ethylene': 188, 'Carbon Dust': 1})
+graph.add_recipe({'Lightly Steam-Cracked Propane': 500}, {'Ethylene': 375, 'Tiny Pile of Carbon Dust': 1})
+graph.add_recipe({'Moderately Steam-Cracked Propane': 1000}, {'Ethylene': 500, 'Small Pile of Carbon Dust': 1})
+graph.add_recipe({'Severely Steam-Cracked Propane': 500}, {'Ethylene': 125, 'Tiny Pile of Carbon Dust': 1})
+graph.add_recipe({'Lightly Hydro-Cracked Butene': 500}, {'Ethylene': 167})
+graph.add_recipe({'Moderately Hydro-Cracked Butene': 500}, {'Ethylene': 167})
+graph.add_recipe({'Lightly Steam-Cracked Butene': 1000}, {'Ethylene': 500, 'Small Pile of Carbon Dust': 1})
+graph.add_recipe({'Moderately Steam-Cracked Butene': 500}, {'Ethylene': 650, 'Tiny Pile of Carbon Dust': 1})
+graph.add_recipe({'Severely Steam-Cracked Butene': 1000}, {'Ethylene': 313, 'Small Pile of Carbon Dust': 3})
+graph.add_recipe({'Lightly Steam-Cracked Ethane': 1000}, {'Ethylene': 250, 'Small Pile of Carbon Dust': 1})
+graph.add_recipe({'Moderately Steam-Cracked Ethane': 1000}, {'Ethane': 125, 'Tiny Pile of Carbon Dust': 6})
+graph.add_recipe({'Lightly Steam-Cracked Butane': 1000}, {'Ethylene': 125, 'Tiny Pile of Carbon Dust': 1})
+graph.add_recipe({'Moderately Steam-Cracked Butane': 1000}, {'Ethylene': 750, 'Tiny Pile of Carbon Dust': 1})
+graph.add_recipe({'Severely Steam-Cracked Butane': 1000}, {'Ethylene': 125, 'Tiny Pile of Carbon Dust': 11})
+graph.add_recipe({'Lightly Steam-Cracked Refinery Gas': 1000}, {'Ethylene': 100, 'Tiny Pile of Carbon Dust': 1})
+graph.add_recipe({'Moderately Steam-Cracked Refinery Gas': 1000}, {'Ethylene': 200, 'Tiny Pile of Carbon Dust': 1})
+graph.add_recipe({'Severely Steam-Cracked Refinery Gas': 1000}, {'Ethylene': 300, 'Tiny Pile of Carbon Dust': 1})
+# page 13 ethylene
+
+
 
 
 

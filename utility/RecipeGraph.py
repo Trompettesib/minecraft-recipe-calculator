@@ -92,7 +92,7 @@ class RecipeGraph:
                     output = from_input
                     break
         for key in list(byproduct.keys()):
-            if self.components[key].recipes != []:
+            if self.components[key].recipes != [] and key != entire_recipe[-1]:
                 del byproduct[key]
         return byproduct
 

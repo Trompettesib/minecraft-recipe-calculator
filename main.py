@@ -64,12 +64,21 @@ if mode == "1":
 
     paths = graph.get_paths(input_component, output_component)
     output_quantity = int(input("Enter the output quantity wanted: "))
-    min_input, min_recipe = graph.get_most_efficient_recipe(paths, output_quantity)
-    print(f"The quantity of raw material for the most efficient recipe found to produce {output_quantity} {output_component}:")
-    for key, value in min_input.items():
+    most_efficient_recipies = graph.get_most_efficient_recipe(paths, output_quantity)
+
+    print(f"The quantity of raw material for the most efficient recipe (for the less input ressource) found to produce {output_quantity} {output_component}:")
+    for key, value in most_efficient_recipies["input_ressource"]["min_input"].items():
         print(f"{value} {key}")
     print("Recipe is :")
-    for component in reversed(min_recipe):
+    for component in reversed(most_efficient_recipies["input_ressource"]["min_recipe"]):
+        print(component)
+    print()
+
+    print(f"The quantity of raw material for the most efficient recipe(for the less global usage) found to produce {output_quantity} {output_component}:")
+    for key, value in most_efficient_recipies["global_ressources"]["min_input"].items():
+        print(f"{value} {key}")
+    print("Recipe is :")
+    for component in reversed(most_efficient_recipies["global_ressources"]["min_recipe"]):
         print(component)
 
 else:

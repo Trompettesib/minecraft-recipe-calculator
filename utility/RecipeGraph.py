@@ -100,25 +100,47 @@ class RecipeGraph:
     def get_most_efficient_recipe(
         self, recipes: typing.List[typing.List[str]], output_quantity: int
     ) -> dict:
-        min_input = None
-        min_recipe = None
+        min_global_ressources_input = None
+        min_global_ressources_recipe = None
+        min_input_ressource_input = None
+        min_input_ressource_recipe = None
         inputs = []
 
         for recipe in recipes:
             inputs.append((self.calculate_input(recipe, output_quantity), recipe))
-        min_input = inputs[0][0]
-        min_recipe = inputs[0][1]
+
+        # print(inputs)
+        min_global_ressources_input = inputs[0][0]
+        min_global_ressources_recipe = inputs[0][1]
+        min_input_ressource_input = inputs[0][0]
+        min_input_ressource_recipe = inputs[0][1]
 
         for input, recipe in inputs:
-            better = False
-            for key in list(input.keys()):
-                if min_input[key] <= input[key]:
-                    better = False
-                if min_input[key] > input[key]:
-                    better = True
-                    break
-            if better == True:
-                min_input = input
-                min_recipe = recipe
+            better_global_ressources = False
+            better_input_ressources = False
 
-        return min_input, min_recipe
+            # Compare total resource usage
+            if sum(input.values()) < sum(min_global_ressources_input.values()):
+                better_global_ressources = True
+
+            # Compare input resource usage
+            if input[recipe[-1]] < min_input_ressource_input[recipe[-1]]:
+                better_input_ressources = True
+
+            if better_global_ressources == True:
+                min_global_ressources_input = input
+                min_global_ressources_recipe = recipe
+            if better_input_ressources == True:
+                min_input_ressource_input = input
+                min_input_ressource_recipe = recipe
+
+        return {
+            "global_ressources": {
+                "min_input": min_global_ressources_input,
+                "min_recipe": min_global_ressources_recipe,
+            },
+            "input_ressource": {
+                "min_input": min_input_ressource_input,
+                "min_recipe": min_input_ressource_recipe,
+            },
+        }
